@@ -5,7 +5,7 @@
 import pymysql
 import mysql.connector
 
-hostname = 'gl-rds.cdcv6ltstogg.us-east-1.rds.amazonaws.com'
+hostname = 'rds endpoint'
 #hostname = 'localhost'
 username = 'root'
 password = 'password'
