@@ -1,0 +1,41 @@
+# *******************************************************************************************************************
+# Author - Adekunle Adegbie
+# This is the creation process for rds on AWS
+# This is my project. User are free to use it but at user's risk
+ *******************************************************************************************************************
+
+1. SSH to the EC2 instance and fire the following commands
+a) sudo apt update
+b) sudo apt install mysql-client
+
+2. Connect to the RDS instance & create the data
+a) wget https://d6opu47qoi4ee.cloudfront.net/employees.sql
+b) mysql -h [RDS end point] -u admin -p
+You should get the MySQL prompt after entering the password
+c) create database employees;
+d) use employees;
+e) source employees.sql
+f) select * from employees;
+
+
+3. Follow the steps for the Python program connecting to the RDS instance from EC2
+– sudo apt install python2-minimal
+– sudo apt install python3-pip
+– sudo pip3 install boto3
+– sudo pip3 install mysql-connector-python
+– sudo pip3 install pymysql
+
+4. Use the rds.py as the template and update the hostname to the endpoint of your RDS instance 
+and run the program
+– wget https://d6opu47qoi4ee.cloudfront.net/rds.py
+– Modify the python program in all the places marked with "TBD"
+LOOK FOR THE rds.py scrip already modified.
+– python3 rds.py
+
+
+In the rds.py script line 10, you can chamge the execution command at the terminal to any of the followings
+cur.execute("SELECT email_id FROM employees limit 10")
+cur.execute("SELECT birth_date FROM employees limit 10")
+cur.execute("SELECT first_name, last_name FROM employees limit 10")
+cur.execute("SELECT gender FROM employees limit 10")
+cur.execute("SELECT hire_date FROM employees limit 10")

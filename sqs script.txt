@@ -1,0 +1,42 @@
+{ 
+"Version": "2008-10-17", 
+"Id": "__default_policy_ID", 
+"Statement": [
+{ 
+"Sid": "__owner_statement", 
+"Effect": "Allow", 
+"Principal": { 
+"AWS": "725232910780"
+},
+"Action": [ 
+"SQS:*"
+],
+"Resource": "arn:aws:sqs:us-east-1:725232910780:content_q"
+},
+{ 
+"Sid": "Allow-SNS-SendMessage", 
+"Effect": "Allow", 
+"Principal": { 
+"Service": "sns.amazonaws.com"
+},
+"Action": ["sqs:SendMessage"], 
+"Resource": "arn:aws:sqs:us-east-1:725232910780:content_q", 
+"Condition": { 
+"ArnEquals": { 
+"aws:SourceArn": "arn:aws:sns:us-east-1:725232910780:content_topic"
+}
+}
+}
+]
+}
+
+
+
+
+
+scp -i option2-kp.pem -r ./docproc-new ec2-user@3.87.154.249:/home/ec2-user
+
+aws s3 cp docproc-invoice.csv s3://glt-target-bucket/docproc-invoice.csv
+
+
+
